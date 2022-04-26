@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cvDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CvTablosu">
+          <Key>
+            <PropertyRef Name="CvId" />
+          </Key>
+          <Property Name="CvId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulId" Type="int" Nullable="false" />
+          <Property Name="FakulteId" Type="int" Nullable="false" />
+          <Property Name="Bolum" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="GenelOrt" Type="int" Nullable="false" />
+          <Property Name="SehirId" Type="int" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="StajId" Type="int" Nullable="false" />
+          <Property Name="ReferansId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FakulteTablosu">
+          <Key>
+            <PropertyRef Name="FakulteId" />
+          </Key>
+          <Property Name="FakulteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FakulteAdi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MezunTablosu">
+          <Key>
+            <PropertyRef Name="MezunId" />
+          </Key>
+          <Property Name="MezunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CvId" Type="int" Nullable="false" />
+          <Property Name="Adi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soyadi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DTarihi" Type="date" Nullable="false" />
+          <Property Name="DYeri" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OkulTablosu">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OkulAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReferansTablosu">
+          <Key>
+            <PropertyRef Name="ReferansId" />
+          </Key>
+          <Property Name="ReferansId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="R_Adi" Type="nchar" MaxLength="10" />
+          <Property Name="R_Soyadi" Type="nchar" MaxLength="10" />
+          <Property Name="R_Meslek" Type="nchar" MaxLength="10" />
+          <Property Name="R_Telefon" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SehirTablosu">
+          <Key>
+            <PropertyRef Name="SehirId" />
+          </Key>
+          <Property Name="SehirId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SehirAdi" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StajTablosu">
+          <Key>
+            <PropertyRef Name="StajId" />
+          </Key>
+          <Property Name="StajId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmaAdi" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UyeTablosu">
+          <Key>
+            <PropertyRef Name="UyeId" />
+          </Key>
+          <Property Name="UyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soyadi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Eposta" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sifre" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DogumT" Type="datetime" />
+          <Property Name="Telefon" Type="nchar" MaxLength="10" />
+          <Property Name="OlusturulmaT" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CvTablosu_FakulteTablosu">
+          <End Role="FakulteTablosu" Type="Self.FakulteTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FakulteTablosu">
+              <PropertyRef Name="FakulteId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="FakulteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_OkulTablosu">
+          <End Role="OkulTablosu" Type="Self.OkulTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OkulTablosu">
+              <PropertyRef Name="OkulId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="OkulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_ReferansTablosu">
+          <End Role="ReferansTablosu" Type="Self.ReferansTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferansTablosu">
+              <PropertyRef Name="ReferansId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="ReferansId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_SehirTablosu">
+          <End Role="SehirTablosu" Type="Self.SehirTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SehirTablosu">
+              <PropertyRef Name="SehirId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="SehirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_StajTablosu">
+          <End Role="StajTablosu" Type="Self.StajTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StajTablosu">
+              <PropertyRef Name="StajId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="StajId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MezunTablosu_CvTablosu1">
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="1" />
+          <End Role="MezunTablosu" Type="Self.MezunTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CvTablosu">
+              <PropertyRef Name="CvId" />
+            </Principal>
+            <Dependent Role="MezunTablosu">
+              <PropertyRef Name="CvId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cvDBModelStoreContainer">
+          <EntitySet Name="CvTablosu" EntityType="Self.CvTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FakulteTablosu" EntityType="Self.FakulteTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MezunTablosu" EntityType="Self.MezunTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OkulTablosu" EntityType="Self.OkulTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReferansTablosu" EntityType="Self.ReferansTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SehirTablosu" EntityType="Self.SehirTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StajTablosu" EntityType="Self.StajTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UyeTablosu" EntityType="Self.UyeTablosu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CvTablosu_FakulteTablosu" Association="Self.FK_CvTablosu_FakulteTablosu">
+            <End Role="FakulteTablosu" EntitySet="FakulteTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_OkulTablosu" Association="Self.FK_CvTablosu_OkulTablosu">
+            <End Role="OkulTablosu" EntitySet="OkulTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_ReferansTablosu" Association="Self.FK_CvTablosu_ReferansTablosu">
+            <End Role="ReferansTablosu" EntitySet="ReferansTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_SehirTablosu" Association="Self.FK_CvTablosu_SehirTablosu">
+            <End Role="SehirTablosu" EntitySet="SehirTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_StajTablosu" Association="Self.FK_CvTablosu_StajTablosu">
+            <End Role="StajTablosu" EntitySet="StajTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MezunTablosu_CvTablosu1" Association="Self.FK_MezunTablosu_CvTablosu1">
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+            <End Role="MezunTablosu" EntitySet="MezunTablosu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cvDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CvTablosu">
+          <Key>
+            <PropertyRef Name="CvId" />
+          </Key>
+          <Property Name="CvId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulId" Type="Int32" Nullable="false" />
+          <Property Name="FakulteId" Type="Int32" Nullable="false" />
+          <Property Name="Bolum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="GenelOrt" Type="Int32" Nullable="false" />
+          <Property Name="SehirId" Type="Int32" Nullable="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="StajId" Type="Int32" Nullable="false" />
+          <Property Name="ReferansId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FakulteTablosu" Relationship="Self.FK_CvTablosu_FakulteTablosu" FromRole="CvTablosu" ToRole="FakulteTablosu" />
+          <NavigationProperty Name="OkulTablosu" Relationship="Self.FK_CvTablosu_OkulTablosu" FromRole="CvTablosu" ToRole="OkulTablosu" />
+          <NavigationProperty Name="ReferansTablosu" Relationship="Self.FK_CvTablosu_ReferansTablosu" FromRole="CvTablosu" ToRole="ReferansTablosu" />
+          <NavigationProperty Name="SehirTablosu" Relationship="Self.FK_CvTablosu_SehirTablosu" FromRole="CvTablosu" ToRole="SehirTablosu" />
+          <NavigationProperty Name="StajTablosu" Relationship="Self.FK_CvTablosu_StajTablosu" FromRole="CvTablosu" ToRole="StajTablosu" />
+          <NavigationProperty Name="MezunTablosu" Relationship="Self.FK_MezunTablosu_CvTablosu1" FromRole="CvTablosu" ToRole="MezunTablosu" />
+        </EntityType>
+        <EntityType Name="FakulteTablosu">
+          <Key>
+            <PropertyRef Name="FakulteId" />
+          </Key>
+          <Property Name="FakulteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FakulteAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_CvTablosu_FakulteTablosu" FromRole="FakulteTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="MezunTablosu">
+          <Key>
+            <PropertyRef Name="MezunId" />
+          </Key>
+          <Property Name="MezunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CvId" Type="Int32" Nullable="false" />
+          <Property Name="Adi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Soyadi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DYeri" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_MezunTablosu_CvTablosu1" FromRole="MezunTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="OkulTablosu">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OkulAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_CvTablosu_OkulTablosu" FromRole="OkulTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="ReferansTablosu">
+          <Key>
+            <PropertyRef Name="ReferansId" />
+          </Key>
+          <Property Name="ReferansId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="R_Adi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="R_Soyadi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="R_Meslek" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="R_Telefon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_CvTablosu_ReferansTablosu" FromRole="ReferansTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="SehirTablosu">
+          <Key>
+            <PropertyRef Name="SehirId" />
+          </Key>
+          <Property Name="SehirId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SehirAdi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_CvTablosu_SehirTablosu" FromRole="SehirTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="StajTablosu">
+          <Key>
+            <PropertyRef Name="StajId" />
+          </Key>
+          <Property Name="StajId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmaAdi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CvTablosu" Relationship="Self.FK_CvTablosu_StajTablosu" FromRole="StajTablosu" ToRole="CvTablosu" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UyeTablosu">
+          <Key>
+            <PropertyRef Name="UyeId" />
+          </Key>
+          <Property Name="UyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Soyadi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Eposta" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DogumT" Type="DateTime" Precision="3" />
+          <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OlusturulmaT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CvTablosu_FakulteTablosu">
+          <End Role="FakulteTablosu" Type="Self.FakulteTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FakulteTablosu">
+              <PropertyRef Name="FakulteId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="FakulteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_OkulTablosu">
+          <End Role="OkulTablosu" Type="Self.OkulTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OkulTablosu">
+              <PropertyRef Name="OkulId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="OkulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_ReferansTablosu">
+          <End Role="ReferansTablosu" Type="Self.ReferansTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferansTablosu">
+              <PropertyRef Name="ReferansId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="ReferansId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_SehirTablosu">
+          <End Role="SehirTablosu" Type="Self.SehirTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SehirTablosu">
+              <PropertyRef Name="SehirId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="SehirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CvTablosu_StajTablosu">
+          <End Role="StajTablosu" Type="Self.StajTablosu" Multiplicity="1" />
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StajTablosu">
+              <PropertyRef Name="StajId" />
+            </Principal>
+            <Dependent Role="CvTablosu">
+              <PropertyRef Name="StajId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MezunTablosu_CvTablosu1">
+          <End Role="CvTablosu" Type="Self.CvTablosu" Multiplicity="1" />
+          <End Role="MezunTablosu" Type="Self.MezunTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CvTablosu">
+              <PropertyRef Name="CvId" />
+            </Principal>
+            <Dependent Role="MezunTablosu">
+              <PropertyRef Name="CvId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cvDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CvTablosu" EntityType="Self.CvTablosu" />
+          <EntitySet Name="FakulteTablosu" EntityType="Self.FakulteTablosu" />
+          <EntitySet Name="MezunTablosu" EntityType="Self.MezunTablosu" />
+          <EntitySet Name="OkulTablosu" EntityType="Self.OkulTablosu" />
+          <EntitySet Name="ReferansTablosu" EntityType="Self.ReferansTablosu" />
+          <EntitySet Name="SehirTablosu" EntityType="Self.SehirTablosu" />
+          <EntitySet Name="StajTablosu" EntityType="Self.StajTablosu" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UyeTablosu" EntityType="Self.UyeTablosu" />
+          <AssociationSet Name="FK_CvTablosu_FakulteTablosu" Association="Self.FK_CvTablosu_FakulteTablosu">
+            <End Role="FakulteTablosu" EntitySet="FakulteTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_OkulTablosu" Association="Self.FK_CvTablosu_OkulTablosu">
+            <End Role="OkulTablosu" EntitySet="OkulTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_ReferansTablosu" Association="Self.FK_CvTablosu_ReferansTablosu">
+            <End Role="ReferansTablosu" EntitySet="ReferansTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_SehirTablosu" Association="Self.FK_CvTablosu_SehirTablosu">
+            <End Role="SehirTablosu" EntitySet="SehirTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CvTablosu_StajTablosu" Association="Self.FK_CvTablosu_StajTablosu">
+            <End Role="StajTablosu" EntitySet="StajTablosu" />
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MezunTablosu_CvTablosu1" Association="Self.FK_MezunTablosu_CvTablosu1">
+            <End Role="CvTablosu" EntitySet="CvTablosu" />
+            <End Role="MezunTablosu" EntitySet="MezunTablosu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cvDBModelStoreContainer" CdmEntityContainer="cvDBEntities">
+          <EntitySetMapping Name="CvTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.CvTablosu">
+              <MappingFragment StoreEntitySet="CvTablosu">
+                <ScalarProperty Name="CvId" ColumnName="CvId" />
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="FakulteId" ColumnName="FakulteId" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="GenelOrt" ColumnName="GenelOrt" />
+                <ScalarProperty Name="SehirId" ColumnName="SehirId" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="StajId" ColumnName="StajId" />
+                <ScalarProperty Name="ReferansId" ColumnName="ReferansId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FakulteTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.FakulteTablosu">
+              <MappingFragment StoreEntitySet="FakulteTablosu">
+                <ScalarProperty Name="FakulteId" ColumnName="FakulteId" />
+                <ScalarProperty Name="FakulteAdi" ColumnName="FakulteAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MezunTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.MezunTablosu">
+              <MappingFragment StoreEntitySet="MezunTablosu">
+                <ScalarProperty Name="MezunId" ColumnName="MezunId" />
+                <ScalarProperty Name="CvId" ColumnName="CvId" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="DTarihi" ColumnName="DTarihi" />
+                <ScalarProperty Name="DYeri" ColumnName="DYeri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OkulTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.OkulTablosu">
+              <MappingFragment StoreEntitySet="OkulTablosu">
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="OkulAdi" ColumnName="OkulAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReferansTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.ReferansTablosu">
+              <MappingFragment StoreEntitySet="ReferansTablosu">
+                <ScalarProperty Name="ReferansId" ColumnName="ReferansId" />
+                <ScalarProperty Name="R_Adi" ColumnName="R_Adi" />
+                <ScalarProperty Name="R_Soyadi" ColumnName="R_Soyadi" />
+                <ScalarProperty Name="R_Meslek" ColumnName="R_Meslek" />
+                <ScalarProperty Name="R_Telefon" ColumnName="R_Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SehirTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.SehirTablosu">
+              <MappingFragment StoreEntitySet="SehirTablosu">
+                <ScalarProperty Name="SehirId" ColumnName="SehirId" />
+                <ScalarProperty Name="SehirAdi" ColumnName="SehirAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StajTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.StajTablosu">
+              <MappingFragment StoreEntitySet="StajTablosu">
+                <ScalarProperty Name="StajId" ColumnName="StajId" />
+                <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="cvDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UyeTablosu">
+            <EntityTypeMapping TypeName="cvDBModel.UyeTablosu">
+              <MappingFragment StoreEntitySet="UyeTablosu">
+                <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="DogumT" ColumnName="DogumT" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="OlusturulmaT" ColumnName="OlusturulmaT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

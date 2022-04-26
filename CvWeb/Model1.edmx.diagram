@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="866164b8fd5f47049af2356e04ec62bc" Name="Diagram1">
+        <EntityTypeShape EntityType="cvDBModel.CvTablosu" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.FakulteTablosu" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.MezunTablosu" Width="1.5" PointX="6.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.OkulTablosu" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.ReferansTablosu" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.SehirTablosu" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.StajTablosu" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cvDBModel.UyeTablosu" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="cvDBModel.FK_CvTablosu_FakulteTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="cvDBModel.FK_CvTablosu_OkulTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="cvDBModel.FK_CvTablosu_ReferansTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="cvDBModel.FK_CvTablosu_SehirTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="cvDBModel.FK_CvTablosu_StajTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="cvDBModel.FK_MezunTablosu_CvTablosu1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
