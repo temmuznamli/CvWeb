@@ -16,8 +16,15 @@ namespace CvWeb
 			route.MapPageRoute("Kayıt", "KayıtOl", "~/Kayit.aspx");
 			route.MapPageRoute("Şifre", "SifremiUnuttum", "~/SifremiUnuttum.aspx");
 
-			//admin yetikleri düzenlenecek:
+			//admin yetikleri
 			route.MapPageRoute("Cv", "Admin/Cv", "~/Admin/Cv.aspx");
+			route.MapPageRoute("Mezun", "Admin/Mezun", "~/Admin/Mezun.aspx");
+			route.MapPageRoute("Fakulte", "Admin/Fakulte", "~/Admin/Fakulte.aspx");
+			route.MapPageRoute("Okul", "Admin/Okul", "~/Admin/Okul.aspx");
+			route.MapPageRoute("Uye", "Admin/Uye", "~/Admin/Uye.aspx");
+			route.MapPageRoute("Referans", "Admin/Referans", "~/Admin/Referans.aspx");
+
+			//
 		}
 		protected void Application_Start(object sender, EventArgs e)
 		{

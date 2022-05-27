@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CvWeb.Default" %>
 
 <!DOCTYPE html>
-<!-- Website template by freewebsitetemplates.com -->
+<!-- Website template by null -->
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -38,15 +38,15 @@
 					<a href="blog.html">Blog</a>
 				</li>
 				<li class="last-child">
-					<a href="contact.html">Contact us</a>
+					<a href="contact.html">İletisim</a>
 				</li>
 			</ul>
 			<div id="adbox">
 				<img src="site/images/discussing.jpg" alt="Img" height="496" width="958">
 				<div class="details">
-					<h1>This is just a place holder</h1>
+					<h1>Kariyerinize İlk Adım</h1>
 					<p>
-						So you can see what the site would look like.
+						Hayalinizdeki işe belkide buradan ulaşacaksınız.
 					</p>
 				</div>
 			</div>
@@ -64,17 +64,17 @@
 				<div id="main">
 					<h2>Bu Adımları Takip Edebilirsin <h2>
 					<p>
-						gsfdşkfdskşdfskfsdşfds <a href="#">sdasdsadsadsa</a> for you, lorem100 .  <a href="#">Forum</a>.
+						DENEME DENEME <a href="#">BURASI DA DENEME</a> senin için > .  <a href="#">Forum</a>.
 					</p>
 					<ul>
 						<li>
-							<a href="index.html">1. This is just a place holder</a>
+							<a href="index.html">1. Şimdilik BOŞ</a>
 						</li>
 						<li>
-							<a href="index.html">2. This is just a place holder</a>
+							<a href="index.html">2. Şimdilik BOŞ</a>
 						</li>
 						<li>
-							<a href="index.html">3. This is just a place holder</a>
+							<a href="index.html">3. Şimdilik BOŞ</a>
 						</li>
 					</ul>
 				</div>
