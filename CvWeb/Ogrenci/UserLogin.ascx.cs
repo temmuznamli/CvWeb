@@ -22,5 +22,10 @@ namespace CvWeb.Ogrenci
 				Session["Kullanici"] kullanici;
 			}
 		}
+
+		protected void TextBox1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

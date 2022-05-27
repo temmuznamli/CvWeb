@@ -205,6 +205,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Menu.cs" />
     <Compile Include="MezunTablosu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -276,6 +277,9 @@
     </Compile>
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yetki.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Yonetim.Master.cs">
       <DependentUpon>Yonetim.Master</DependentUpon>
